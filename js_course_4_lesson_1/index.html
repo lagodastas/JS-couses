@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Albums</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container" id="albumListDiv"></div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="js/albums.js"></script>
+<script>
+
+    /*Element for the Albums render*/
+    const albumListDiv = document.getElementById('albumListDiv');
+
+    /*Init class Albums, get the list of all albums and render them*/
+    const albums = new Albums();
+
+    albums.getAlbums()
+          .then(
+                (data) => {
+                    albums.renderAlbums(data,albumListDiv);
+                }
+          )
+          .catch(e => console.error(e));
+
+</script>
+</html>
