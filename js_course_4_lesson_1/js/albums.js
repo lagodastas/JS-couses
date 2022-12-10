@@ -44,7 +44,7 @@ class Albums {
                         <h3 class="card-title d-none">
                             <a href="#" class="text-secondary">Id ${item.id}</a>
                         </h3>
-                        <p class="card-text text-truncate tx-width" title="${item.title}">
+                        <p class="card-text text-truncate tx-width text-capitalize" title="${item.title}">
                            ${item.title}
                         </p>
                         <a href="#" class="btn btn-primary d-none">Read More</a>
