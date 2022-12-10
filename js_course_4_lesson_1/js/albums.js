@@ -21,7 +21,8 @@ class Albums {
             `<div class="row">
                 <div class="col-12">
                     <a href="album_details.html?albumId=${item.id}"
-                       target="_blank">
+                       target="_blank"
+                       class="text-capitalize text-decoration-none">
                         ${item.title}
                     </a>
                 </div>
