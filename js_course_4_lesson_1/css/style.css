@@ -1,0 +1,10 @@
+@media (min-width: 900px) {
+    body.main {
+        background: url(../img/bg.png) no-repeat right bottom fixed;
+    }
+}
+
+
+.tx-width {
+    max-width: 300px;
+}
