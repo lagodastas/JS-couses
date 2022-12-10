@@ -1,72 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Album details</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-<section class="bg-light py-4 my-5 gallery">
-    <div class="container">
-        <div class="row" id="photosListDiv">
-            <div class="col-12">
-                <h2 class="mb-3 text-primary">Album Gallery</h2>
+    <head>
+        <meta charset="UTF-8">
+        <title>Album details</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <section class="bg-light py-4 my-5 gallery">
+            <div class="container">
+                <div class="row" id="photosListDiv">
+                    <div class="col-12">
+                        <h2 class="mb-3 text-primary">Album Gallery</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="gallery-popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img src="" class="modal-img" alt="Modal Image">
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
+        <script src="js/albums.js"></script>
 
-<!-- Modal -->
-<div class="modal fade" id="gallery-popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body text-center">
-                <img src="" class="modal-img" alt="Modal Image">
-            </div>
-        </div>
-    </div>
-</div>
+        <script>
 
-</body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+            /*Element for the Photos render*/
+            const photosListDiv = document.getElementById('photosListDiv');
 
-<script src="js/albums.js"></script>
+            const albumId = urlParams.get('albumId')
 
-<script>
+            /*Init class Albums, get the list of photos and render them*/
+            const albums = new Albums();
 
-    /*Element for the Photos render*/
-    const photosListDiv = document.getElementById('photosListDiv');
+            albums.getPhotos(albumId)
+                  .then(
+                        (data) => {
+                            albums.renderPhotos(data,photosListDiv);
+                        }
+                  )
+                  .catch(e => console.error(e));
 
-    const albumId = urlParams.get('albumId')
-
-    /*Init class Albums, get the list of photos and render them*/
-    const albums = new Albums();
-
-    albums.getPhotos(albumId)
-          .then(
-                (data) => {
-                    albums.renderPhotos(data,photosListDiv);
+            /*Add listener on the thumbnail photos and onClick open modal window with replaced Image,
+              taken from thumbnail data attr
+            */
+            document.addEventListener("click",function (e){
+                if(e.target.classList.contains("gallery-item")){
+                    const src = e.target.getAttribute("data-mdb-img");
+                    document.querySelector(".modal-img").src = src;
+                    const myModal = new bootstrap.Modal(document.getElementById('gallery-popup'));
+                    myModal.show();
                 }
-          )
-          .catch(e => console.error(e));
-
-    /*Add listener on the thumbnail photos and onClick open modal window with replaced Image,
-      taken from thumbnail data attr
-    */
-    document.addEventListener("click",function (e){
-        if(e.target.classList.contains("gallery-item")){
-            const src = e.target.getAttribute("data-mdb-img");
-            document.querySelector(".modal-img").src = src;
-            const myModal = new bootstrap.Modal(document.getElementById('gallery-popup'));
-            myModal.show();
-        }
-    })
-</script>
+            })
+        </script>
+    </body>
 
 </html>
