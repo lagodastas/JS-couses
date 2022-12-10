@@ -32,7 +32,7 @@ class Albums {
 
     renderPhotos(items, elem) {
         items.forEach(item => elem.innerHTML +=
-            `<div class="col-2">
+            `<div class="col-lg-2 col-sm-4 col-xs-4 col-md-4">
                 <div class="card my-3">
                     <img src="${item.thumbnailUrl}"
                         data-mdb-img="${item.url}"
@@ -44,7 +44,7 @@ class Albums {
                         <h3 class="card-title d-none">
                             <a href="#" class="text-secondary">Id ${item.id}</a>
                         </h3>
-                        <p class="card-text text-truncate" title="${item.title}">
+                        <p class="card-text text-truncate tx-width" title="${item.title}">
                            ${item.title}
                         </p>
                         <a href="#" class="btn btn-primary d-none">Read More</a>
