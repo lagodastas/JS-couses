@@ -58,7 +58,7 @@
             /*Add listener on the thumbnail photos and onClick open modal window with replaced Image,
               taken from thumbnail data attr
             */
-            document.addEventListener("click",function (e){
+            photosListDiv.addEventListener("click",function (e){
                 if(e.target.classList.contains("gallery-item")){
                     const src = e.target.getAttribute("data-mdb-img");
                     document.querySelector(".modal-img").src = src;
