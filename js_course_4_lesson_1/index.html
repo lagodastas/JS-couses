@@ -46,10 +46,10 @@
                 let items = document.getElementsByClassName("album-name");
                 for (let i = 0; i < items.length; i++) {
                     if(items[i].innerHTML.toLowerCase().indexOf( search_string.toLowerCase() ) === -1) {
-                        items[i].style.display = "none";
+                        items[i].classList.add("d-none");
                     }
                     else {
-                        items[i].style.display = "block";
+                        items[i].classList.remove("d-none");
                     }
                 }
             });
