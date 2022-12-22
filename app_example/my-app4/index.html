@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Age Func</title>
+</head>
+<body>
+
+<script>
+    /*age function calculates the remainder of division by 10 and 100,
+      then takes proper declension from an 'array'
+    */
+    function age(number, str) {
+        let array = [2, 0, 1, 1, 1, 2];
+
+        return str[
+                    ( number%100 > 4 && number%100 < 20 ) ?
+                        2
+                        :
+                        array[
+                                ( number%10 < 5 ) ?
+                                    number%10
+                                    :
+                                    5
+                        ]
+                ];
+    }
+
+
+    /*showMessage func ask to put number,
+      then calculates proper declension and show the result.
+      If input is not a number,  prompt message repeats
+    */
+    function showMessage() {
+        let declension = ['год', 'года', 'лет'];
+        let inputValue = prompt('Input a number');
+        inputValue = parseInt( inputValue.replace(/\s/g, '') );
+
+
+        if( !isNaN(inputValue) ) {
+            alert( inputValue + ' ' + age( inputValue, declension ) );
+        } else {
+            showMessage();
+        }
+    }
+
+    showMessage();
+</script>
+
+</body>
+</html>
