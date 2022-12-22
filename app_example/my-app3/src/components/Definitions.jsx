@@ -1,6 +1,6 @@
 import React from 'react';
 
-function DefinitionsList(props)  {
+function Definitions(props)  {
 
     const { data } = props;
     return (
@@ -18,4 +18,4 @@ function DefinitionsList(props)  {
 }
 
 
-export default DefinitionsList;
+export default Definitions;

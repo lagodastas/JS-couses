@@ -1,4 +1,4 @@
-import DefinitionsList from './components/DefinitionsList';
+import Definitions from './components/Definitions';
 
 const definitions = [
     { dt: 'one', dd: 'two', id: 1 },
@@ -9,7 +9,7 @@ const definitions = [
 function App() {
   return (
     <div className="App">
-      <DefinitionsList data={definitions} />
+      <Definitions data={definitions} />
     </div>
   );
 }
