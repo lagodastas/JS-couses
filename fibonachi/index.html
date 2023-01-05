@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fib</title>
+</head>
+<body>
+
+<script>
+    function fib(n) {
+        let a = 1;
+        let b = 1;
+        for (let i = 3; i <= n; i++) {
+            let c = a + b;
+            a = b;
+            b = c;
+        }
+
+        return b;
+    }
+
+    alert( 'fib(3) = ' + fib(3) );
+    alert( 'fib(50) = ' + fib(50) );
+
+</script>
+
+</body>
+</html>
